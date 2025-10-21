@@ -5,7 +5,7 @@ public class RegistroServicio {
     private int servicioId;
     private int funcionarioId;
     private int tipoVehiculoId;
-    private String fecha; // yyyy-MM-dd
+    private String fecha; 
     private double precioCobrado;
     private String observaciones;
 

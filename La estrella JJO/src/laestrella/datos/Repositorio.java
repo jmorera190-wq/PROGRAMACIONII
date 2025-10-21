@@ -27,7 +27,7 @@ public class Repositorio {
     }
 
     public void cargarDatosIniciales() {
-        if (!servicios.isEmpty()) return; // ya cargado
+        if (!servicios.isEmpty()) return;
 
         servicios.add(new Servicio(1, "LB", "Lavado Básico", "Lavado exterior, interior y aspirada", 15000, 20000));
         servicios.add(new Servicio(2, "LE", "Lavado Especial", "Lavado + polichado y ceras", 30000, 40000));
@@ -45,7 +45,7 @@ public class Repositorio {
         tiposVehiculo.add(new TipoVehiculo(2, "Camioneta"));
     }
 
-    // getters
+    
     public List<Servicio> getServicios(){ return servicios; }
     public List<Funcionario> getFuncionarios(){ return funcionarios; }
     public List<TipoVehiculo> getTiposVehiculo(){ return tiposVehiculo; }
@@ -57,7 +57,7 @@ public class Repositorio {
 
     public List<RegistroServicio> getRegistros(){ return registros; }
 
-    // reportes
+    
     public List<Object[]> produccionPorServicio(){
         return servicios.stream().map(s -> {
             long cantidad = registros.stream().filter(r -> r.getServicioId()==s.getId()).count();
