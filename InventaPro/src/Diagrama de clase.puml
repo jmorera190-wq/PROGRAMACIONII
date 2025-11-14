@@ -1,0 +1,80 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+@startuml
+
+package inventapro.model {
+    class Producto {
+        - int id
+        - String nombre
+        - String categoria
+        - int cantidad
+        - double precio
+        + getters/setters
+    }
+
+    class Usuario {
+        - int id
+        - String username
+        - String password
+        + getters/setters
+    }
+}
+
+package inventapro.dao {
+    class Conexion {
+        + static Connection conectar()
+    }
+
+    class ProductoDAO {
+        + insertar(Producto p)
+        + actualizarProducto(Producto p)
+        + eliminarProducto(int id)
+        + buscarPorId(int id)
+        + listar()
+        + obtenerBajoStock(int umbral)
+        + buscarPorNombre(String texto)
+    }
+
+    class UsuarioDAO {
+        + login(String user, String pass) : boolean
+    }
+
+    ProductoDAO --> Conexion
+    UsuarioDAO --> Conexion
+}
+
+package inventapro.service {
+    class InventarioService {
+        - ProductoDAO dao
+        - int umbralBajoStock
+        + listar()
+        + agregarProducto(...)
+        + editarProducto(Producto p)
+        + eliminarProducto(int id)
+        + buscarPorId(int id)
+        + registrarEntrada(...)
+        + registrarSalida(...)
+        + obtenerBajoStock()
+    }
+
+    InventarioService --> ProductoDAO
+}
+
+package inventapro.view {
+    class MainView {
+        - UsuarioDAO usuarioDAO
+        - ProductoDAO productoDAO
+        + cargarTablaStock()
+        + cargarTablaBajoStock()
+        + guardarProducto()
+        + modificarProducto()
+        + eliminarProducto()
+    }
+
+    MainView --> UsuarioDAO
+    MainView --> ProductoDAO
+    MainView --> InventarioService
+}
+
+@enduml

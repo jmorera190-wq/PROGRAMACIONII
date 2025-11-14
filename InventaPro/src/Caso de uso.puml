@@ -1,0 +1,32 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+@startuml
+left to right direction
+' Cambiamos a vertical:
+top to bottom direction
+
+actor Administrador
+
+rectangle "Sistema Inventario" {
+
+    usecase "Iniciar\nsesión" as UC1
+    usecase "Agregar\nproducto" as UC2
+    usecase "Modificar\nproducto" as UC3
+    usecase "Eliminar\nproducto" as UC4
+    usecase "Listar\nproductos" as UC5
+    usecase "Consultar\nbajo stock" as UC6
+    usecase "Registrar\nentrada" as UC7
+    usecase "Registrar\nsalida" as UC8
+}
+
+Administrador --> UC1
+Administrador --> UC2
+Administrador --> UC3
+Administrador --> UC4
+Administrador --> UC5
+Administrador --> UC6
+Administrador --> UC7
+Administrador --> UC8
+
+@enduml
